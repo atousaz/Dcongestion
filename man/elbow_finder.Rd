@@ -2,7 +2,7 @@
 % Please edit documentation in R/elbow_finder.R
 \name{elbow_finder}
 \alias{elbow_finder}
-\title{Clean text and build term matrix for bag of words model or TF DFI.}
+\title{Finds the elbow cut point.}
 \usage{
 elbow_finder(x_values, y_values)
 }
@@ -15,7 +15,7 @@ balanced_dataframe balanced dataframe containing two columns: review texts and b
 A balanced dataframe
 }
 \description{
-Clean text and build term matrix for bag of words model or TF DFI.
+Finds the elbow cut point.
 }
 \examples{
 \dontrun{

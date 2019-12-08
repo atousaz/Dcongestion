@@ -1,8 +1,7 @@
-
-#' Clean text and build term matrix for bag of words model or TF DFI.
+#' Delay calculation.
 #'
-#' @param dataset unbalanced dataset, a dataframe : two column: first text reviews and second binary class, label: negative =0 and positive=1.
-#' @return balanced_dataframe balanced dataframe containing two columns: review texts and binary class , label: negative =0 and positive=1.
+#' @param dataset including travel time, reference speed and actual speed
+#' @return Delay value
 #' @author Atousa Zarindast
 
 #' @export

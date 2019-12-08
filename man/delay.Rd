@@ -2,20 +2,20 @@
 % Please edit documentation in R/delay.R
 \name{delay}
 \alias{delay}
-\title{Clean text and build term matrix for bag of words model or TF DFI.}
+\title{Delay calculation.}
 \usage{
 delay(x, len)
 }
 \arguments{
-\item{dataset}{unbalanced dataset, a dataframe : two column: first text reviews and second binary class, label: negative =0 and positive=1.}
+\item{dataset}{including travel time, reference speed and actual speed}
 }
 \value{
-balanced_dataframe balanced dataframe containing two columns: review texts and binary class , label: negative =0 and positive=1.
+Delay value
 
 A balanced dataframe
 }
 \description{
-Clean text and build term matrix for bag of words model or TF DFI.
+Delay calculation.
 }
 \examples{
 \dontrun{

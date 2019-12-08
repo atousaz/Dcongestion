@@ -1,3 +1,10 @@
+#' Visualizing the elbow cut off point
+#'
+#' @return balanced_dataframe balanced dataframe containing two columns: review texts and binary class , label: negative =0 and positive=1.
+#' @author Atousa zarindast
+#' @import dplyr
+#' @export
+#' @return A balanced dataframe
 elbow_viusal<-function(visual){
 
   timespan=unique(as.character(visual$time))
