@@ -43,21 +43,25 @@ ggplot(data=dataset,aes(x=time1,y=as.Date(date1)))+geom_tile(aes(fill = Speed))+
 
 
 #### Delay calculation
-```{r setup}
-delay(visual,0.6)
+```{r }
+Dcongestion::delay(visual,0.6)
 ```
-
-####Elbow cut off
-```{r setup}
-
+####Elbow cut off theshold calculation
+```{r echo=TRUE, eval=FALSE}
 r<-elbow_viusal(visual)
+```
+####Elbow cut off visualization
+```{r ,warning = FALSE,message=FALSE}
+library(dplyr)
+data(package = "Dcongestion", r)
+
 sorted_percentages <- r %>% arrange(desc(con_percentage))
 ggplot(data=r,aes(x=time1, y=con_percentage))+geom_line()
 
 ordered_data <- sorted_percentages %>% mutate(id = row_number())
 ggplot(data=ordered_data,aes(x=id, y=con_percentage))+geom_line()
 
-el_thre <- elbow_finder(ordered_data[, 4], ordered_data[, 1])
-
+el_thre <- Dcongestion::elbow_finder(ordered_data[, 5], ordered_data[, 1])
+ggplot(data=ordered_data,aes(x=id, y=con_percentage))+geom_line()+ geom_hline(yintercept=el_thre[2], linetype="dashed", color = "red", size=2)
 
 ```

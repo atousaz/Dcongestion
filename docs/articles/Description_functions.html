@@ -88,12 +88,10 @@
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="dt">package =</span> <span class="st">"Dcongestion"</span>, dataset)
 visual&lt;-<span class="kw">Congestion_detection</span>(dataset)</code></pre></div>
 </div>
-<div id="importing-the-imbalance-dataset-optional" class="section level4">
+<div id="loading-preprocessed-dataset-and-visualizing-the-out-put" class="section level4">
 <h4 class="hasAnchor">
-<a href="#importing-the-imbalance-dataset-optional" class="anchor"></a>Importing the imbalance dataset (OPTIONAL)</h4>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#imb &lt;- system.file(package = "Dcongestion", "extdata/Imbalance_Restaurant_Reviews.tsv")</span>
-<span class="co">#imbalance_data &lt;- read.delim(imb,quote='',stringsAsFactors = FALSE)</span>
-
+<a href="#loading-preprocessed-dataset-and-visualizing-the-out-put" class="anchor"></a>Loading preprocessed dataset and visualizing the out put</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)
 <span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="dt">package =</span> <span class="st">"Dcongestion"</span>, visual)
 
@@ -102,8 +100,32 @@ visual<span class="op">$</span>date1 &lt;-<span class="kw"><a href="https://rdrr
 
 <span class="kw">ggplot</span>(<span class="dt">data=</span>visual,<span class="kw">aes</span>(<span class="dt">x=</span>time1,<span class="dt">y=</span><span class="kw"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span>(date1)))<span class="op">+</span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> visual))<span class="op">+</span><span class="kw">scale_fill_gradient</span>(<span class="dt">low=</span><span class="st">"red"</span>,<span class="dt">high=</span><span class="st">"green"</span>,<span class="dt">na.value=</span><span class="st">"white"</span>)<span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>()<span class="op">+</span><span class="kw">ylab</span>(<span class="st">""</span>)<span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.grid =</span> <span class="kw">element_blank</span>() )</code></pre></div>
 <p><img src="Description_functions_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(Dcongestion)
-<span class="co">#&gt; Loading required package: dplyr</span>
+</div>
+<div id="comparison-of-actual-dataset-and-functions-out-put" class="section level4">
+<h4 class="hasAnchor">
+<a href="#comparison-of-actual-dataset-and-functions-out-put" class="anchor"></a>comparison of actual dataset and function’s out put</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="dt">package =</span> <span class="st">"Dcongestion"</span>, dataset)
+dataset<span class="op">$</span>time1 &lt;-<span class="kw"><a href="https://rdrr.io/r/base/as.POSIXlt.html">as.POSIXct</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>(dataset<span class="op">$</span>time),<span class="dt">format=</span><span class="st">"%H:%M:%S"</span>)
+dataset<span class="op">$</span>date1 &lt;-<span class="kw"><a href="https://rdrr.io/r/base/as.POSIXlt.html">as.POSIXct</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>(dataset<span class="op">$</span>date),<span class="dt">format=</span><span class="st">"%Y-%m-%d"</span>)
+
+<span class="kw">ggplot</span>(<span class="dt">data=</span>dataset,<span class="kw">aes</span>(<span class="dt">x=</span>time1,<span class="dt">y=</span><span class="kw"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span>(date1)))<span class="op">+</span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> Speed))<span class="op">+</span><span class="kw">scale_fill_gradient</span>(<span class="dt">low=</span><span class="st">"red"</span>,<span class="dt">high=</span><span class="st">"green"</span>,<span class="dt">na.value=</span><span class="st">"white"</span>)<span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>()<span class="op">+</span><span class="kw">ylab</span>(<span class="st">""</span>)<span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.grid =</span> <span class="kw">element_blank</span>() )</code></pre></div>
+<p><img src="Description_functions_files/figure-html/setup-1.png" width="700"></p>
+</div>
+<div id="delay-calculation" class="section level4">
+<h4 class="hasAnchor">
+<a href="#delay-calculation" class="anchor"></a>Delay calculation</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Dcongestion<span class="op">::</span><span class="kw">delay</span>(visual,<span class="fl">0.6</span>)
+<span class="co">#&gt; [1] 1.898703</span></code></pre></div>
+</div>
+<div id="elbow-cut-off-theshold-calculation" class="section level4">
+<h4 class="hasAnchor">
+<a href="#elbow-cut-off-theshold-calculation" class="anchor"></a>Elbow cut off theshold calculation</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">r&lt;-<span class="kw">elbow_viusal</span>(visual)</code></pre></div>
+</div>
+<div id="elbow-cut-off-visualization" class="section level4">
+<h4 class="hasAnchor">
+<a href="#elbow-cut-off-visualization" class="anchor"></a>Elbow cut off visualization</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Attaching package: 'dplyr'</span>
 <span class="co">#&gt; The following objects are masked from 'package:stats':</span>
@@ -112,11 +134,19 @@ visual<span class="op">$</span>date1 &lt;-<span class="kw"><a href="https://rdrr
 <span class="co">#&gt; The following objects are masked from 'package:base':</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;     intersect, setdiff, setequal, union</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'Dcongestion'</span>
-<span class="co">#&gt; The following object is masked _by_ '.GlobalEnv':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     visual</span></code></pre></div>
+<span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="dt">package =</span> <span class="st">"Dcongestion"</span>, r)
+
+sorted_percentages &lt;-<span class="st"> </span>r <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(con_percentage))
+<span class="kw">ggplot</span>(<span class="dt">data=</span>r,<span class="kw">aes</span>(<span class="dt">x=</span>time1, <span class="dt">y=</span>con_percentage))<span class="op">+</span><span class="kw">geom_line</span>()</code></pre></div>
+<p><img src="Description_functions_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
+ordered_data &lt;-<span class="st"> </span>sorted_percentages <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">id =</span> <span class="kw">row_number</span>())
+<span class="kw">ggplot</span>(<span class="dt">data=</span>ordered_data,<span class="kw">aes</span>(<span class="dt">x=</span>id, <span class="dt">y=</span>con_percentage))<span class="op">+</span><span class="kw">geom_line</span>()</code></pre></div>
+<p><img src="Description_functions_files/figure-html/unnamed-chunk-6-2.png" width="700"></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
+el_thre &lt;-<span class="st"> </span>Dcongestion<span class="op">::</span><span class="kw">elbow_finder</span>(ordered_data[, <span class="dv">5</span>], ordered_data[, <span class="dv">1</span>])
+<span class="kw">ggplot</span>(<span class="dt">data=</span>ordered_data,<span class="kw">aes</span>(<span class="dt">x=</span>id, <span class="dt">y=</span>con_percentage))<span class="op">+</span><span class="kw">geom_line</span>()<span class="op">+</span><span class="st"> </span><span class="kw">geom_hline</span>(<span class="dt">yintercept=</span>el_thre[<span class="dv">2</span>], <span class="dt">linetype=</span><span class="st">"dashed"</span>, <span class="dt">color =</span> <span class="st">"red"</span>, <span class="dt">size=</span><span class="dv">2</span>)</code></pre></div>
+<p><img src="Description_functions_files/figure-html/unnamed-chunk-6-3.png" width="700"></p>
 </div>
   </div>
 
