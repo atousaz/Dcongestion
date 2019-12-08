@@ -1,17 +1,16 @@
-#' Delay calculation.
+#'@title Delay calculation.
 #'
 #' @param dataset including travel time, reference speed and actual speed
 #' @return Delay value
 #' @author Atousa Zarindast
 
 #' @export
-#' @return A balanced dataframe
+#' @return Calculated delay value
 #' @examples
 #' \dontrun{
-#' library("SentiAnalyzer")
-#' direction <- system.file(package = "SentiAnalyzer", "extdata/Imbalance_Restaurant_Reviews.tsv")
-#' imbalance_data<- read.delim(direction,quote='',stringsAsFactors = FALSE)
-#' BalanceData(imbalance_data)}
+#' library("dcongestion")
+#' visual <- load(package = "Dcongestion", "visual")
+#' delay(visual)}
 
 delay=function(x,len){
   x=visual

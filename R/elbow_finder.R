@@ -1,17 +1,12 @@
 #' Finds the elbow cut point.
 #'
-#' @param dataset unbalanced dataset, a dataframe : two column: first text reviews and second binary class, label: negative =0 and positive=1.
-#' @return balanced_dataframe balanced dataframe containing two columns: review texts and binary class , label: negative =0 and positive=1.
+#' @param dataset
+#' @return Elbow cut of point
 #' @author Atousa Zarindast
 
 #' @export
-#' @return A balanced dataframe
-#' @examples
-#' \dontrun{
-#' library("SentiAnalyzer")
-#' direction <- system.file(package = "SentiAnalyzer", "extdata/Imbalance_Restaurant_Reviews.tsv")
-#' imbalance_data<- read.delim(direction,quote='',stringsAsFactors = FALSE)
-#' BalanceData(imbalance_data)}
+#' @return cut of point
+
 
 elbow_finder <- function(x_values, y_values) {
   # Max values to create line

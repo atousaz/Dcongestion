@@ -6,23 +6,13 @@
 \usage{
 elbow_finder(x_values, y_values)
 }
-\arguments{
-\item{dataset}{unbalanced dataset, a dataframe : two column: first text reviews and second binary class, label: negative =0 and positive=1.}
-}
 \value{
-balanced_dataframe balanced dataframe containing two columns: review texts and binary class , label: negative =0 and positive=1.
+Elbow cut of point
 
-A balanced dataframe
+cut of point
 }
 \description{
 Finds the elbow cut point.
-}
-\examples{
-\dontrun{
-library("SentiAnalyzer")
-direction <- system.file(package = "SentiAnalyzer", "extdata/Imbalance_Restaurant_Reviews.tsv")
-imbalance_data<- read.delim(direction,quote='',stringsAsFactors = FALSE)
-BalanceData(imbalance_data)}
 }
 \author{
 Atousa Zarindast

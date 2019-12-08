@@ -7,9 +7,7 @@
 elbow_viusal(visual)
 }
 \value{
-balanced_dataframe balanced dataframe containing two columns: review texts and binary class , label: negative =0 and positive=1.
-
-A balanced dataframe
+congestion probabalities
 }
 \description{
 Visualizing the elbow cut off point

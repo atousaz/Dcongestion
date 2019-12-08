@@ -1,17 +1,16 @@
-#' Identifying spationtemporal congestions
+#' Identifying spationtemporal congestions.
 #'
-#' @param dataset unbalanced dataset, a dataframe : two column: first text reviews and second binary class, label: negative =0 and positive=1.
-#' @return balanced_dataframe balanced dataframe containing two columns: review texts and binary class , label: negative =0 and positive=1.
+#' @param dataset of speed values and change point probabilities.
+#' @return Spatiotemporal congestions
 #' @author Atousa zarindast
 #' @import dplyr
 #' @export
-#' @return A balanced dataframe
+#' @return classified dataframe
 #' @examples
 #' \dontrun{
-#' library("SentiAnalyzer")
-#' direction <- system.file(package = "SentiAnalyzer", "extdata/Imbalance_Restaurant_Reviews.tsv")
-#' imbalance_data<- read.delim(direction,quote='',stringsAsFactors = FALSE)
-#' BalanceData(imbalance_data)}
+#' library("Dcongestion")
+#' dataset <- load(package = "Dcongestion", "dataset")
+#' Congestion_detection(dataset)}
 library(dplyr)
 Congestion_detection <- function(dataset) {
 

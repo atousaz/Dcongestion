@@ -12,17 +12,16 @@ delay(x, len)
 \value{
 Delay value
 
-A balanced dataframe
+Calculated delay value
 }
 \description{
 Delay calculation.
 }
 \examples{
 \dontrun{
-library("SentiAnalyzer")
-direction <- system.file(package = "SentiAnalyzer", "extdata/Imbalance_Restaurant_Reviews.tsv")
-imbalance_data<- read.delim(direction,quote='',stringsAsFactors = FALSE)
-BalanceData(imbalance_data)}
+library("dcongestion")
+visual <- load(package = "Dcongestion", "visual")
+delay(visual)}
 }
 \author{
 Atousa Zarindast

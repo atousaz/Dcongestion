@@ -1,14 +1,16 @@
 Package: Dcongestion
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Spatiotemporal congestion detection
 Version: 0.1.0
-Authors@R:person("Atousa", "Zarindast", email = "atousaz@iastate.edu", role = c("aut", "cre"))
-Maintainer: Atousa Zarindast <yourfault@somewhere.net>
+Authors@R: c(
+    person("Zahra", "Khoshmanesh", email = "zkh@iastate.edu", role = c("aut", "cre")))
 Description: Spatiotemporal congestion detection
 License: MIT + file LICENSE
+LazyData: true
 Encoding: UTF-8
-RoxygenNote: 7.0.2
+RoxygenNote: 7.0.2    
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
-Depends: dplyr (>= 0.4.3),
-		 ggplot2 (>= 2.1.0)
+Imports: ggplot2,
+		 dplyr
+
