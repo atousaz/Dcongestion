@@ -1,0 +1,63 @@
+---
+title: "Description of functions"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Description of functions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+####Congestion detection with sample data 
+
+```{r echo=TRUE, eval=FALSE}
+data(package = "Dcongestion", dataset)
+visual<-Congestion_detection(dataset)
+```
+#### Loading preprocessed dataset and visualizing the out put
+```{r include=TRUE,warning = FALSE}
+
+library(ggplot2)
+data(package = "Dcongestion", visual)
+
+visual$time1 <-as.POSIXct(as.character(visual$time),format="%H:%M:%S")
+visual$date1 <-as.POSIXct(as.character(visual$date),format="%Y-%m-%d")
+
+ggplot(data=visual,aes(x=time1,y=as.Date(date1)))+geom_tile(aes(fill = visual))+scale_fill_gradient(low="red",high="green",na.value="white")+ theme_bw()+ylab("")+ theme(panel.grid = element_blank() )
+```
+
+#### comparison of actual dataset and function's out put 
+```{r setup}
+data(package = "Dcongestion", dataset)
+dataset$time1 <-as.POSIXct(as.character(dataset$time),format="%H:%M:%S")
+dataset$date1 <-as.POSIXct(as.character(dataset$date),format="%Y-%m-%d")
+
+ggplot(data=dataset,aes(x=time1,y=as.Date(date1)))+geom_tile(aes(fill = Speed))+scale_fill_gradient(low="red",high="green",na.value="white")+ theme_bw()+ylab("")+ theme(panel.grid = element_blank() )
+```
+
+
+#### Delay calculation
+```{r setup}
+delay(visual,0.6)
+```
+
+####Elbow cut off
+```{r setup}
+
+r<-elbow_viusal(visual)
+sorted_percentages <- r %>% arrange(desc(con_percentage))
+ggplot(data=r,aes(x=time1, y=con_percentage))+geom_line()
+
+ordered_data <- sorted_percentages %>% mutate(id = row_number())
+ggplot(data=ordered_data,aes(x=id, y=con_percentage))+geom_line()
+
+el_thre <- elbow_finder(ordered_data[, 4], ordered_data[, 1])
+
+
+```

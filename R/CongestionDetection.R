@@ -4,7 +4,7 @@
 #' @param dataset unbalanced dataset, a dataframe : two column: first text reviews and second binary class, label: negative =0 and positive=1.
 #' @return balanced_dataframe balanced dataframe containing two columns: review texts and binary class , label: negative =0 and positive=1.
 #' @author Atousa zarindast
-
+#' @import dplyr
 #' @export
 #' @return A balanced dataframe
 #' @examples
@@ -13,7 +13,7 @@
 #' direction <- system.file(package = "SentiAnalyzer", "extdata/Imbalance_Restaurant_Reviews.tsv")
 #' imbalance_data<- read.delim(direction,quote='',stringsAsFactors = FALSE)
 #' BalanceData(imbalance_data)}
-
+library(dplyr)
 Congestion_detection <- function(dataset) {
 
 
