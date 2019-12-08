@@ -126,14 +126,6 @@ dataset<span class="op">$</span>date1 &lt;-<span class="kw"><a href="https://rdr
 <h4 class="hasAnchor">
 <a href="#elbow-cut-off-visualization" class="anchor"></a>Elbow cut off visualization</h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'dplyr'</span>
-<span class="co">#&gt; The following objects are masked from 'package:stats':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     filter, lag</span>
-<span class="co">#&gt; The following objects are masked from 'package:base':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     intersect, setdiff, setequal, union</span>
 <span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="dt">package =</span> <span class="st">"Dcongestion"</span>, r)
 
 sorted_percentages &lt;-<span class="st"> </span>r <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(con_percentage))

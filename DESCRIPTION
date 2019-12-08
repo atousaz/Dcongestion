@@ -10,4 +10,5 @@ LazyData: TRUE
 RoxygenNote: 7.0.2
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
-Depends: dplyr (>= 0.4.3), ggplot2 (>= 2.1.0)
+Depends: dplyr (>= 0.4.3),
+		 ggplot2 (>= 2.1.0)
