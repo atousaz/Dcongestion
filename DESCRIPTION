@@ -2,11 +2,11 @@ Package: Dcongestion
 Type: Package
 Title: What the Package Does (Title Case)
 Version: 0.1.0
-Author: Atousa Zarindast
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
-LazyData: TRUE
+Authors@R:person("Atousa", "Zarindast", email = "atousaz@iastate.edu", role = c("aut", "cre"))
+Maintainer: Atousa Zarindast <yourfault@somewhere.net>
+Description: Spatiotemporal congestion detection
+License: MIT + file LICENSE
+Encoding: UTF-8
 RoxygenNote: 7.0.2
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
