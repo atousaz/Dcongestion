@@ -11,7 +11,8 @@ vignette: >
 
 ### SpatioTemporal congestion detection
 
-  Dcongestion is a package for spatiotemporal congestions based on speed data
+  Dcongestion is a package for spatiotemporal congestions based on speed data    
+  
 ## Installation
 `install.packages("Dcongestion")`
 
@@ -23,9 +24,9 @@ vignette: >
 
 
 ## Usage
-Major functions for spatiotemporal traffic congestion:
-1. Calculating delays
+Major functions for spatiotemporal traffic congestion:  
+1. Calculating delays  
 
-2. Idenfitiying congestion and visualization
+2. Idenfitiying congestion and visualization  
 
-3. Elbow cut off 
+3. Elbow cut off   

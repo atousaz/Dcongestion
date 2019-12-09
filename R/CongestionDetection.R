@@ -1,6 +1,6 @@
-#' Identifying spationtemporal congestions.
-#'
-#' @param dataset of speed values and change point probabilities.
+#' @title Data driven congestion detection.
+#' @name Data Driven congestion
+#' @param dataset including speed signal, change point probabilities
 #' @return Spatiotemporal congestions
 #' @author Atousa zarindast
 #' @import dplyr

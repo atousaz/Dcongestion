@@ -1,6 +1,7 @@
-#' Finds the elbow cut point.
+#' @title Elbow finder.
+#' @name Elbow finder
 #'
-#' @param dataset
+#' @param two dimentional space
 #' @return Elbow cut of point
 #' @author Atousa Zarindast
 

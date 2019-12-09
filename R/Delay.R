@@ -1,4 +1,4 @@
-#'@title Delay calculation.
+#' @title Delay calculation.
 #'
 #' @param dataset including travel time, reference speed and actual speed
 #' @return Delay value
