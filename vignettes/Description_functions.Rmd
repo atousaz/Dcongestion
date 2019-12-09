@@ -45,10 +45,12 @@ dataset$date1 <-as.POSIXct(as.character(dataset$date),format="%Y-%m-%d")
 ggplot(data=dataset,aes(x=time1,y=as.Date(date1)))+geom_tile(aes(fill = Speed))+scale_fill_gradient(low="red",high="green",na.value="white")+ theme_bw()+ylab("")+ theme(panel.grid = element_blank() )
 ```
 
-As green colour refers to normal speed flow while red colour refers to reduced speed values. By comparing the above ***Congestion_detection*** function out put and actual dataset we can that temporal congestions has been identified.  
+As green colour refers to normal speed flow while red colour refers to reduced speed values. By comparing the above ***Congestion_detection()*** function out put and actual dataset we can that temporal congestions has been identified.  
 
-We can further calculate the delay associated to congestions by ***delay()***  function.  
-#### Delay calculation
+We can further calculate the delay associated to congestions by ***delay()***  function.    
+
+####Delay calculation  
+
 ```{r }
 Dcongestion::delay(visual,0.6)
 ```

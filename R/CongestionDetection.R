@@ -1,10 +1,9 @@
 #' @title Data driven congestion detection.
-#' @name Data Driven congestion
+#' @name Data Driven congestion detection.
 #' @param dataset including speed signal, change point probabilities
 #' @return Spatiotemporal congestions
 #' @author Atousa zarindast
 #' @import dplyr
-#' @export
 #' @return classified dataframe
 #' @examples
 #' \dontrun{

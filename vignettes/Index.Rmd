@@ -7,7 +7,9 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-
+  
+  
+  
 
 ### SpatioTemporal congestion detection
 
@@ -23,9 +25,11 @@ vignette: >
 [Description of Functions](https://atousaz.github.io/Dcongestion/articles/Description_functions.html)
 
 
-## Usage
-Major functions for spatiotemporal traffic congestion:  
-1. Calculating delays  
+## Usage 
+
+Major functions for spatiotemporal traffic congestion:   
+  
+1. Calculating delays    
 
 2. Idenfitiying congestion and visualization  
 
