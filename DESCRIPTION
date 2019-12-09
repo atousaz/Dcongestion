@@ -3,7 +3,7 @@ Type: Package
 Title: Spatiotemporal congestion detection
 Version: 0.1.0
 Authors@R: c(
-    person("Zahra", "Khoshmanesh", email = "zkh@iastate.edu", role = c("aut", "cre")))
+    person("Atousa", "Zarindast", email = "Atousaz@iastate.edu", role = c("aut", "cre")))
 Description: Spatiotemporal congestion detection
 License: MIT + file LICENSE
 LazyData: true
