@@ -91,7 +91,10 @@
 <p>Congestion detection is one of the key steps to reduce delays and associated costs in traffic management. With the increasing usage of GPS base navigation, promising speed data is now available. This study utilizes such extensive historical probe data to detect spatio-temporal congestion by mining historical speed data. The detected congestion were further classified as Recurrent and Non Recurrent Congestion (RC, NRC). This work presents a big data driven expert system for identifying both recurrent and non-recurrent congestion and analyzing the delay and cost associated with them. For this purpose, first normal and anomalous days were classified based on travel rate distribution. Later, we utilized Bayesian change point detection to segment speed signal and detect temporal congestion.In this study, a statistical big data mining methodology is developed and the robustness of the proposed methodology is tested on probe data for 2016 calendar year, in Des Moines region, Iowa, US. The proposed framework is self adaptive because it does not rely on additional information for detecting spatio-temporal congestion. Therefore, it addresses the limits of prior work in NRC detection. The optimum value for congestion percentage threshold is identified by Elbow cut off method. ####Congestion detection with sample data Here we use a sample dataset in our package “dataset” to show the performance of the <strong><em>Congestion_detection</em></strong> function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="dt">package =</span> <span class="st">"Dcongestion"</span>, dataset)
 visual&lt;-<span class="kw">Congestion_detection</span>(dataset)</code></pre></div>
-<p>By loading a preprocessed data with <strong><em>Congestion_detection()</em></strong> function and visualizing the output we can observe the temporal congestions in our datafram. In this particular example we have morning an evening pick traffic hours that has been idenfitied with the proposed framework. #### Loading preprocessed dataset and visualizing the out put</p>
+<p>By loading a preprocessed data with <strong><em>Congestion_detection()</em></strong> function and visualizing the output we can observe the temporal congestions in our datafram. In this particular example we have morning an evening pick traffic hours that has been idenfitied with the proposed framework.</p>
+<div id="loading-preprocessed-dataset-and-visualizing-the-out-put" class="section level4">
+<h4 class="hasAnchor">
+<a href="#loading-preprocessed-dataset-and-visualizing-the-out-put" class="anchor"></a>Loading preprocessed dataset and visualizing the out put</h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)
 <span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="dt">package =</span> <span class="st">"Dcongestion"</span>, visual)
@@ -101,7 +104,11 @@ visual<span class="op">$</span>date1 &lt;-<span class="kw"><a href="https://rdrr
 
 <span class="kw">ggplot</span>(<span class="dt">data=</span>visual,<span class="kw">aes</span>(<span class="dt">x=</span>time1,<span class="dt">y=</span><span class="kw"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span>(date1)))<span class="op">+</span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> visual))<span class="op">+</span><span class="kw">scale_fill_gradient</span>(<span class="dt">low=</span><span class="st">"red"</span>,<span class="dt">high=</span><span class="st">"green"</span>,<span class="dt">na.value=</span><span class="st">"white"</span>)<span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>()<span class="op">+</span><span class="kw">ylab</span>(<span class="st">""</span>)<span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.grid =</span> <span class="kw">element_blank</span>() )</code></pre></div>
 <p><img src="Description_functions_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
-<p>To get a sense of what actual dataset looks like and how the function extracts the congetions we further ploted the actual dataset. #### comparison of actual dataset and function’s out put</p>
+<p>To get a sense of what actual dataset looks like and how the function extracts the congetions we further ploted the actual dataset.</p>
+</div>
+<div id="comparison-of-actual-dataset-and-functions-out-put" class="section level4">
+<h4 class="hasAnchor">
+<a href="#comparison-of-actual-dataset-and-functions-out-put" class="anchor"></a>comparison of actual dataset and function’s out put</h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="dt">package =</span> <span class="st">"Dcongestion"</span>, dataset)
 dataset<span class="op">$</span>time1 &lt;-<span class="kw"><a href="https://rdrr.io/r/base/as.POSIXlt.html">as.POSIXct</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>(dataset<span class="op">$</span>time),<span class="dt">format=</span><span class="st">"%H:%M:%S"</span>)
 dataset<span class="op">$</span>date1 &lt;-<span class="kw"><a href="https://rdrr.io/r/base/as.POSIXlt.html">as.POSIXct</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>(dataset<span class="op">$</span>date),<span class="dt">format=</span><span class="st">"%Y-%m-%d"</span>)
@@ -110,6 +117,7 @@ dataset<span class="op">$</span>date1 &lt;-<span class="kw"><a href="https://rdr
 <p><img src="Description_functions_files/figure-html/setup-1.png" width="700"></p>
 <p>As green colour refers to normal speed flow while red colour refers to reduced speed values. By comparing the above <strong><em>Congestion_detection()</em></strong> function out put and actual dataset we can that temporal congestions has been identified.</p>
 <p>We can further calculate the delay associated to congestions by <strong><em>delay()</em></strong> function.</p>
+</div>
 <div id="delay-calculation" class="section level4">
 <h4 class="hasAnchor">
 <a href="#delay-calculation" class="anchor"></a>Delay calculation</h4>
@@ -122,8 +130,11 @@ dataset<span class="op">$</span>date1 &lt;-<span class="kw"><a href="https://rdr
 <a href="#elbow-cut-off-theshold-calculation" class="anchor"></a>Elbow cut off theshold calculation</h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
 r&lt;-<span class="kw"><a href="../reference/elbow_viusal.html">elbow_viusal</a></span>(visual)</code></pre></div>
-<p><strong><em>elbow_finder()</em></strong> function was used to calculate the probabilities associated to each time instance. Here we use a preprocessed dataset “r” in order to show the probabilities plot and elbow plot.<br>
-####Elbow cut off visualization</p>
+<p><strong><em>elbow_finder()</em></strong> function was used to calculate the probabilities associated to each time instance. Here we use a preprocessed dataset “r” in order to show the probabilities plot and elbow plot.</p>
+</div>
+<div id="elbow-cut-off-visualization" class="section level4">
+<h4 class="hasAnchor">
+<a href="#elbow-cut-off-visualization" class="anchor"></a>Elbow cut off visualization</h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)
 <span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="dt">package =</span> <span class="st">"Dcongestion"</span>, r)
 

@@ -22,7 +22,8 @@ data(package = "Dcongestion", dataset)
 visual<-Congestion_detection(dataset)
 ```
 
-By loading a preprocessed data with ***Congestion_detection()*** function and visualizing the output we can observe the temporal congestions in our datafram. In this particular example we have morning an evening pick traffic hours that has been idenfitied with the proposed framework.
+By loading a preprocessed data with ***Congestion_detection()*** function and visualizing the output we can observe the temporal congestions in our datafram. In this particular example we have morning an evening pick traffic hours that has been idenfitied with the proposed framework.  
+
 #### Loading preprocessed dataset and visualizing the out put
 ```{r include=TRUE,warning = FALSE}
 
@@ -35,7 +36,8 @@ visual$date1 <-as.POSIXct(as.character(visual$date),format="%Y-%m-%d")
 ggplot(data=visual,aes(x=time1,y=as.Date(date1)))+geom_tile(aes(fill = visual))+scale_fill_gradient(low="red",high="green",na.value="white")+ theme_bw()+ylab("")+ theme(panel.grid = element_blank() )
 ```
 
-To get a sense of what actual dataset looks like and how the function extracts the congetions we further ploted the actual dataset.
+To get a sense of what actual dataset looks like and how the function extracts the congetions we further ploted the actual dataset.  
+
 #### comparison of actual dataset and function's out put 
 ```{r setup}
 data(package = "Dcongestion", dataset)
@@ -54,16 +56,20 @@ We can further calculate the delay associated to congestions by ***delay()***  f
 ```{r }
 Dcongestion::delay(visual,0.6)
 ```
-In order to identify and classify detected congestions to Recurrent and non-recurrent. We use an elbow cut of method on the congestion labeled data points. cut of point can be calculated by ***elbow_finder()***  function.
+In order to identify and classify detected congestions to Recurrent and non-recurrent. We use an elbow cut of method on the congestion labeled data points. cut of point can be calculated by ***elbow_finder()***  function.  
 
-####Elbow cut off theshold calculation
+
+####Elbow cut off theshold calculation  
+
 ```{r echo=TRUE, eval=FALSE}
 
 r<-elbow_viusal(visual)
 ```
 ***elbow_finder()***  function was used to calculate the probabilities associated to each time instance.
-Here we use a preprocessed dataset "r" in order to show the probabilities plot and elbow plot.   
-####Elbow cut off visualization
+Here we use a preprocessed dataset "r" in order to show the probabilities plot and elbow plot.  
+
+####Elbow cut off visualization  
+
 ```{r ,warning = FALSE,message=FALSE}
 library(dplyr)
 data(package = "Dcongestion", r)
