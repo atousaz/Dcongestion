@@ -14,15 +14,16 @@ knitr::opts_chunk$set(
 )
 ```
 ###Abstract
-Congestion detection is one of the key steps to reduce delays and associated costs in traffic management. With the increasing usage of GPS base navigation, promising speed data is now available. This study utilizes such extensive historical probe data to detect spatio-temporal congestion by mining historical speed data. The detected congestion were further classified as Recurrent and Non Recurrent Congestion (RC, NRC). This work presents a big data driven expert system for identifying both recurrent and non-recurrent congestion and analyzing the delay and cost associated with them. For this purpose, first normal and anomalous days were classified based on travel rate distribution. Later, we utilized Bayesian change point detection to segment speed signal and detect temporal congestion.In this study, a statistical big data mining methodology is developed and the robustness of the proposed methodology is tested on probe data for 2016 calendar year, in Des Moines region, Iowa, US. The proposed framework is self adaptive because it does not rely on additional information for detecting spatio-temporal congestion. Therefore, it addresses the limits of prior work in NRC detection. The optimum value for congestion percentage threshold is identified by Elbow cut off method.
-####Congestion detection with sample data 
+Congestion detection is one of the key steps to reduce delays and associated costs in traffic management. With the increasing usage of GPS base navigation, promising speed data is now available. This study utilizes such extensive historical probe data to detect spatio-temporal congestion by mining historical speed data. The detected congestion were further classified as Recurrent and Non Recurrent Congestion (RC, NRC). This work presents a big data driven expert system for identifying both recurrent and non-recurrent congestion and analyzing the delay and cost associated with them. For this purpose, first normal and anomalous days were classified based on travel rate distribution. Later, we utilized Bayesian change point detection to segment speed signal and detect temporal congestion.In this study, a statistical big data mining methodology is developed and the robustness of the proposed methodology is tested on probe data for 2016 calendar year, in Des Moines region, Iowa, US. The proposed framework is self adaptive because it does not rely on additional information for detecting spatio-temporal congestion. Therefore, it addresses the limits of prior work in NRC detection. The optimum value for congestion percentage threshold is identified by Elbow cut off method.  
+####Congestion detection with sample data  
+
 Here we use a sample dataset in our package "dataset" to show the performance of the ***Congestion_detection*** function.
 ```{r echo=TRUE, eval=FALSE}
 data(package = "Dcongestion", dataset)
 visual<-Congestion_detection(dataset)
 ```
 
-By loading a preprocessed data with ***Congestion_detection()*** function and visualizing the output we can observe the temporal congestions in our datafram. In this particular example we have morning an evening pick traffic hours that has been idenfitied with the proposed framework.  
+By loading a preprocessed data with ***Congestion_detection()*** function and visualizing the output we can observe the temporal congestions in our datafram. In this particular example we have morning an evening peak traffic hours that has been idenfitied with the proposed framework.  
 
 #### Loading preprocessed dataset and visualizing the out put
 ```{r include=TRUE,warning = FALSE}
@@ -47,7 +48,7 @@ dataset$date1 <-as.POSIXct(as.character(dataset$date),format="%Y-%m-%d")
 ggplot(data=dataset,aes(x=time1,y=as.Date(date1)))+geom_tile(aes(fill = Speed))+scale_fill_gradient(low="red",high="green",na.value="white")+ theme_bw()+ylab("")+ theme(panel.grid = element_blank() )
 ```
 
-As green colour refers to normal speed flow while red colour refers to reduced speed values. By comparing the above ***Congestion_detection()*** function out put and actual dataset we can that temporal congestions has been identified.  
+As green colour refers to normal speed flow while red colour refers to reduced speed values. By comparing the above ***Congestion_detection()*** function out put and actual dataset we can that conclude that temporal congestions has been identified.  
 
 We can further calculate the delay associated to congestions by ***delay()***  function.    
 

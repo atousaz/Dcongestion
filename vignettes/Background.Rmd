@@ -1,0 +1,102 @@
+---
+title: "Back ground"
+output: html_document
+
+
+
+---
+<style>
+body {
+text-align: justify}
+</style>
+<center> *Congestion detection* </center>  
+
+
+
+<center> **Atousa Zarindast**</center>
+
+
+***Abstract***  
+Congestion detection is one of the key steps to reduce delays and associated costs in traffic
+management.  With the increasing usage of GPS base navigation, promising speed data is
+now  available.   This  study  utilizes  such  extensive  historical  probe  data  to  detect  spatio-
+temporal congestion by mining historical speed data. The detected congestion were further
+classified as Recurrent and Non Recurrent Congestion (RC, NRC).  For this purpose, first normal and
+anomalous days were classified based on travel rate distribution.  Later, we utilized Bayesian
+change  point  detection  to  segment  speed  signal  and  detect  temporal  congestion. The optimum value for congestion percentage threshold is identified by Elbow cut off
+method and speed values were temporally denoised.
+
+*** 
+
+***Introduction***  
+The transportation sector is the second largest carbon-dioxide (CO2) emission contrib-
+utor  according  to  the  International  Energy  Agency  in  2011  [1].   Joumard  et  al.  [2]  found
+that CO2 emissions from low speed traveling are higher than those with high speed trav-
+eling.  Moreover, fuel consumption of a cold engine is higher than an engine which is fully
+warmed up.  Traffic congestion with low speed and stop and go conditions contributes to
+green  house  emissions  significantly.   In  addition  the  United  States  Department  of  Trans-
+portation (USDOT) considers traffic congestion as “one of the single largest threats” to the economic prosperity of the nation [3].  
+The congestion cost for the top 471 urban areas of
+the United States was $160 billion, including 6.9 billion hours of wasted time and 3.1 billion
+gallons of wasted fuel [4].  Therefore, managing and maintaining a smooth traffic flow and
+reducing the conditions associated with stop and go, not only will reduce social costs, but
+also contributes to green house emission reduction and benefits the economy of the nation.
+As a result, studying and analyzing congestion and the associated delays are crucial.
+Traffic congestion is usually divided into two types:  Recurrent Congestion (RC) and Non-
+Recurrent Congestion (NRC) [5, 6].  RC exhibits a daily pattern in terms of location and
+duration and RC events are usually known by traffic operators.  RC is observed at peak hour
+periods mainly because of excess travel demand and inadequate infrastructure capacity [7].
+However, NRC can occur at any time of day with unknown location and duration depending
+on the local condition of the road network, travel demand, and capacity.  NRC can occur due
+to work zones, special events, weather condition, and incidents [8].  Although the importance
+of NRC detection is recognized by Traffic Operation Centers, research on this topic is recent.
+Such events can cause major travel time variability [9].
+An accurate congestion detection helps with traffic managements both in strategic and tac-
+tical  manner.   Particularly  studying  NRCs  is  important  from  an  operational  stand  point.
+understanding NRCs would allow traffic operation centers (TOC) to take proactive decisions.
+Such understanding will allow TOCs to gain valuable information that would support them
+in 1) developing mitigation strategies based on NRC causes, 2) estimating the delay hour
+and cost associated with NRC according to their causes, and 3) developing and supporting
+such incident response strategies and effectively manage planned events.  The speed of addi-
+tional road construction generally cannot match increases in travel demand and number of
+vehicles.  Therefore, road construction may not be efficient in easing traffic congestions.  In
+this view, intelligent transportation systems (ITSs) can improve the efficiency and service
+level of existing transportation infrastructure and help with relieving the road congestion
+problem.
+
+*** 
+
+***Methodology***  
+The mathematical abstraction of our data corpus is defined here. Consider the weighted graph of the traffic network denoted by $G=(S,E,W)$ , where $S$ defines nodes of the graph, $E$ denotes the edges, and $W$ denotes weights of the edges. In this study node graphs corresponds to consecutive road-segments that partitions the freeway that is under study and average vehicle speed $(x)$ in one-minute interval is reported for each segment. The nodes corresponding to consecutive segments connect weighted edges along the freeway. Since in our study freeway segments are approximately equal in length (from 0.4 to 0.6 miles), In this study weight of nodes are equal to 1.\\
+The order of the road segments describes the connectivity of the graph and speed values is a (noisy) time series with length $N$, for each node $S$ for a given date $v$.
+\begin{equation}
+\label{x}
+    X^v_s=\{x^{t_{1},v},x^{t_{2},v}, \ldots, x^{t_{N},v}\} ,  s\in \{S\} ,  v\in \{D\}
+\end{equation}
+Where $t_i$ denotes the $ith$ time instant $T=\{\,t_i \mid i \in N\,\}$ and $v$ denotes date. Overall, we have a third-order tensor $x \in  R_+^\ n\times N\times D$\ where $D$ defines the total number of days, $n$ defines the total number of nodes (segments), and $N$ defines the length of the time series in each date. For example, in this study since average speed values are being reported in one-minute interval for each segment the length of the time series  $N$ will be equal to $24\times 60=1440$. Given our tensor, the major challenge that we face is the scale of traffic data. For example, there are 54,000 segments in the entire road network of Iowa which produces 4 gigabytes of daily traffic data. To alleviate this issue, preprocessing for dimension reduction is needed. Given that congestions are primary reasons for travel time variability \cite{guner2012dynamic,noland2002travel}, we reduce dimension of the tensor along the second dimension considering travel rate percentile values for each date/segment. Travel rate percentile values were calculated in a MapReduce framework using Apache Pig Hadoop. These values will perform as key features for identifying anomalies and associated RC for normal days.\\
+
+
++ Identifying Appropriate Traffic States Based Upon Speed Values
+
+Detecting abrupt property changes associated with time series data is the main goal of change point detection algorithms. Change point detection has attracted attention of many researchers in data mining and statistics for many years \cite{basseville1993detection}. Change point detection has shown promising application in many fields such as  process controlling \cite{aroian1950effectiveness}, econometrics \cite{chen1997testing} , and traffic parameter prediction \cite{comert2013online}. Here we intent to apply a change point detection algorithm for traffic state identification.\\
+We first describe mathematical formulation of traffic state detection algorithm. Assume  $\forall   (s,v),  \{ \exists   t_i \mid x_s^{t_i,v} \in X_s^v, p_s^{t_i,v} \in  P_s^v, l_{s,i}^v \in  L_{s}^v \}$ Where $T=\{\,t_i \mid i \in N\,\}$ denotes the $ith$ time instant, $P_s^v=\{p_s^{t_{i},v} \mid t_i \in T, v \in D , s \in S\}$ denotes the probability of $ith$ time instant corresponding to $x_s^{t_i,v}$ time series (\ref{x}) , being a change point and $L_{s,i}^v=\{l_{s,i}^v \mid i \in N, v  \in D, s \in S\}$ denotes traffic state change points.
+For congestion detection, Bayesian change point detection algorithm \cite{adams2007bayesian} was applied on each day of the entire year and the change points probabilities $P_s^v=\{p_s^{t_{i},v} \mid t_i \in T, v \in D , s \in S\}$ are determined. Later identified change points probabilities $P_s^v=\{p_s^{t_{i},v} \mid t_i \in T, v \in D , s \in S\}$ are used in (Algorithm 1) in order to determined traffic state changes points and associated traffic states in (Algorithm 2).
+
+
+After setting $truncate$ parameter following procedure is used to determine traffic states using probability values $P_s^v=\{p_s^{t_{i},v} \mid t_i \in T, v \in D , s \in S\}$ . First change points probabilities higher than $(Threshold = 0.01)$ are detected and for consecutive probabilities higher than 0.01 the max probability was defined as traffic state change point $L_{s,i}^v$ (Algorithm 1). The points before traffic state change point $l_{s,i}^v $ were grouped as one state, having the traffic state change point included into that group and this algorithm (Algorithm 2) is repeated for the remaining time instants of a day $T=\{\,t_i \mid i \in N\,\}$ . It is notable that the primary conceptual building block of our approach is based on sub-divided road network into multiple smaller segments. There is an extensive large scale time series data set associated to each of these segments, with thousands of daily based recorded  data points.
+Figure \ref{traffic states  image}  shows an example of applying change point detection algorithm on a particular day. As can be seen in Figure \ref{traffic states  image}   by applying change point detection algorithm different traffic stages for a specific date is identified.
+
++ Congestion detection based on traffic states clustering 
+
+Consider  $\{t_i^{RC}\mid i \subset N\}$ and $\{t_i^{NRC}\mid i \subset N$\} where $t_i^{RC}$ and $t_i^{NRC}$ corresponds to RC and NRC time instances respectively.
+After defining traffic states $K^d$, for each traffic state $K^d$ percentile values (15th,50th,85th) associated with $x_s^{v,k}$ time series have been calculated, where $v \in D,k\in K,s \in S$ defines date, traffic state, and segment respectively. These percentile values are features for our analysis and since we aim to identify congestion and non-congestion conditions, the number of clusters in this case are predefined (equal 2). Therefore, $kmean$ clustering algorithm  is applied to percentile values for congestion determination and the cluster with the min average speed values is defined as the congestion cluster for each segment (see Figure \ref{fig:3d}), Formulation (\ref{eqc}).
+
++ Elbow cutt off   
+
+In order to reduce false-alarm rate and to be able to robustly report the summary statis-
+tics  associated  with  RC,  we  utilize  elbow  cut-off  method  on  the  minute-wise  congestion
+percentages
+
+***Data Description***   
+
+Probe vehicle speed data provided by INRIX with a minute-wise reporting frequency for the entire 2016 calendar year  were used in this study \cite{INRIX}. INRIX reports average speed data in one-minute intervals for each segment using on-board GPS devices in vehicles. These on-board devices are used to estimate the real-time speed in freeways and arterial segments. Since the quality of the probe-based data depends on the availability of GPS equipped vehicles, INRIX reports reliability measures (confidence score and c-values). Confidence score takes value 30 when only real time data is used in reporting, while confidence score 20 indicates a mixture of real-time and historical data for reporting, and confidence score 10 is when historical data is reported due to unavailability of probe vehicle. Additional reliability measure is C-value that is reported only if confidence score is 30. This parameter ranges from 0-100 and it is a relative measure for the number of probe-vehicle used in real time speed report. In this study we consider confidence score of 30 that represents real time speed and C-value greater than 30 that has been suggested by \citet{haghani200995}. Developed approach was tested on traffic speed data from Interstate Freeways I-80/35 and I-235 of the Des Moines region, in Iowa, USA.  The Des Moines region experiences the majority of Iowa’s freeway congestion (62\% of slow traffic events) along with one of the highest concentrations of traffic incidents within the state \cite{TMC}. Hence, it is challenging to delevop a reliable decision support system in such a network.
