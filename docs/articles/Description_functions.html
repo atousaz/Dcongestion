@@ -54,6 +54,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/Background.html">Back ground</a>
+    </li>
+    <li>
       <a href="../articles/Description_functions.html">Description of functions</a>
     </li>
     <li>
@@ -88,10 +91,12 @@
 <div id="abstract" class="section level3">
 <h3 class="hasAnchor">
 <a href="#abstract" class="anchor"></a>Abstract</h3>
-<p>Congestion detection is one of the key steps to reduce delays and associated costs in traffic management. With the increasing usage of GPS base navigation, promising speed data is now available. This study utilizes such extensive historical probe data to detect spatio-temporal congestion by mining historical speed data. The detected congestion were further classified as Recurrent and Non Recurrent Congestion (RC, NRC). This work presents a big data driven expert system for identifying both recurrent and non-recurrent congestion and analyzing the delay and cost associated with them. For this purpose, first normal and anomalous days were classified based on travel rate distribution. Later, we utilized Bayesian change point detection to segment speed signal and detect temporal congestion.In this study, a statistical big data mining methodology is developed and the robustness of the proposed methodology is tested on probe data for 2016 calendar year, in Des Moines region, Iowa, US. The proposed framework is self adaptive because it does not rely on additional information for detecting spatio-temporal congestion. Therefore, it addresses the limits of prior work in NRC detection. The optimum value for congestion percentage threshold is identified by Elbow cut off method. ####Congestion detection with sample data Here we use a sample dataset in our package “dataset” to show the performance of the <strong><em>Congestion_detection</em></strong> function.</p>
+<p>Congestion detection is one of the key steps to reduce delays and associated costs in traffic management. With the increasing usage of GPS base navigation, promising speed data is now available. This study utilizes such extensive historical probe data to detect spatio-temporal congestion by mining historical speed data. The detected congestion were further classified as Recurrent and Non Recurrent Congestion (RC, NRC). This work presents a big data driven expert system for identifying both recurrent and non-recurrent congestion and analyzing the delay and cost associated with them. For this purpose, first normal and anomalous days were classified based on travel rate distribution. Later, we utilized Bayesian change point detection to segment speed signal and detect temporal congestion.In this study, a statistical big data mining methodology is developed and the robustness of the proposed methodology is tested on probe data for 2016 calendar year, in Des Moines region, Iowa, US. The proposed framework is self adaptive because it does not rely on additional information for detecting spatio-temporal congestion. Therefore, it addresses the limits of prior work in NRC detection. The optimum value for congestion percentage threshold is identified by Elbow cut off method.<br>
+####Congestion detection with sample data</p>
+<p>Here we use a sample dataset in our package “dataset” to show the performance of the <strong><em>Congestion_detection</em></strong> function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="dt">package =</span> <span class="st">"Dcongestion"</span>, dataset)
 visual&lt;-<span class="kw">Congestion_detection</span>(dataset)</code></pre></div>
-<p>By loading a preprocessed data with <strong><em>Congestion_detection()</em></strong> function and visualizing the output we can observe the temporal congestions in our datafram. In this particular example we have morning an evening pick traffic hours that has been idenfitied with the proposed framework.</p>
+<p>By loading a preprocessed data with <strong><em>Congestion_detection()</em></strong> function and visualizing the output we can observe the temporal congestions in our datafram. In this particular example we have morning an evening peak traffic hours that has been idenfitied with the proposed framework.</p>
 <div id="loading-preprocessed-dataset-and-visualizing-the-out-put" class="section level4">
 <h4 class="hasAnchor">
 <a href="#loading-preprocessed-dataset-and-visualizing-the-out-put" class="anchor"></a>Loading preprocessed dataset and visualizing the out put</h4>
@@ -115,7 +120,7 @@ dataset<span class="op">$</span>date1 &lt;-<span class="kw"><a href="https://rdr
 
 <span class="kw">ggplot</span>(<span class="dt">data=</span>dataset,<span class="kw">aes</span>(<span class="dt">x=</span>time1,<span class="dt">y=</span><span class="kw"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span>(date1)))<span class="op">+</span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> Speed))<span class="op">+</span><span class="kw">scale_fill_gradient</span>(<span class="dt">low=</span><span class="st">"red"</span>,<span class="dt">high=</span><span class="st">"green"</span>,<span class="dt">na.value=</span><span class="st">"white"</span>)<span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>()<span class="op">+</span><span class="kw">ylab</span>(<span class="st">""</span>)<span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.grid =</span> <span class="kw">element_blank</span>() )</code></pre></div>
 <p><img src="Description_functions_files/figure-html/setup-1.png" width="700"></p>
-<p>As green colour refers to normal speed flow while red colour refers to reduced speed values. By comparing the above <strong><em>Congestion_detection()</em></strong> function out put and actual dataset we can that temporal congestions has been identified.</p>
+<p>As green colour refers to normal speed flow while red colour refers to reduced speed values. By comparing the above <strong><em>Congestion_detection()</em></strong> function out put and actual dataset we can that conclude that temporal congestions has been identified.</p>
 <p>We can further calculate the delay associated to congestions by <strong><em>delay()</em></strong> function.</p>
 </div>
 <div id="delay-calculation" class="section level4">
